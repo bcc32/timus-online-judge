@@ -1,3 +1,28 @@
+/*
+ * Aaron Zeng
+ * 2011.12.14
+ * 
+ * 1005: Stone Pile
+ * Time Limit: 2.0 second
+ * Memory Limit: 16 MB
+ * 
+ * You have a number of stones with known weights W_1, ..., W_n. Write 
+ * a program that will rearrange the stones into two piles such that 
+ * weight difference between the piles is minimal.
+ * 
+ * Input: Input contains the number of stones N (1 <= N <= 20) and 
+ * weights of the stones W_1, ..., W_N (integers, 1 <= W_i <= 100000) 
+ * delimited by white spaces.
+ * 
+ * Output: Your program should output a number representing the minimal 
+ * possible weight difference between stone piles
+ * 
+ * Sample:
+ * input            output
+ * 5                3
+ * 5 8 13 27 14
+ */
+
 #include <iostream>
 #include <vector>
 using namespace std;
