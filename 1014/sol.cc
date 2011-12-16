@@ -1,55 +1,39 @@
-/*
- * Aaron Zeng
- * 2011.12.14
- * 
- * 1014: Product of Digits
- * 
- * Time Limit: 1.0 second
- * Memory Limit: 16 MB
- * 
- * Your task is to find the minimal positive integer number Q so that 
- * the product of digits of Q is exactly equal to N.
- * 
- * Input: The input contains the single number N (0 <= N <= 10^9).
- * 
- * Output: Your program should print to the output the only number Q.
- * If such a number does not exist print -1.
- */
-
 #include <iostream>
 #include <sstream>
+#include <algorithm>
 using namespace std;
 
-int poss(int n)
+string find(long long n)
 {
-    for (int i = 2; i <= 9; i++)
-        while (n % i == 0)
-            n /= i;
-    return n == 1;
-}
-
-int query(int Q, int N)
-{
-    stringstream ss;
-    ss << Q;
-    string s = ss.str();
-    int p = 1;
-    for (int i = 0; i < s.size(); i++)
-        p *= (int) s[i] - (int) '0';
-    return p == N;
+    ostringstream ss;
+    long long f = n;
+    if (f == 0)
+    {
+        f = 1;
+        ss << "01";
+    }
+    else if (f == 1)
+        ss << 1;
+    else
+    {
+        for (int i = 9; i > 1; i--)
+            while (f % i == 0)
+            {
+                ss << i;
+                f /= i;
+            }
+    }
+    if (f == 1)
+        return ss.str();
+    else
+        return "1-";
 }
 
 int main(void)
 {
-    int N;
-    cin >> N;
-    if (!poss(N))
-        cout << -1 << endl;
-    else
-    {
-        int Q = 1;
-        while (!query(Q, N))
-            Q++;
-        cout << Q << endl;
-    }
+    long long n;
+    cin >> n;
+    string s = find(n);
+    reverse(s.begin(), s.end());
+    cout << s << endl;
 }
