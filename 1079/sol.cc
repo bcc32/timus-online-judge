@@ -1,7 +1,12 @@
+// XXX
+// STORE MAXIMUMS FOUND IN AN ARRAY
+
 #include <iostream>
+#include <vector>
+#include <utility>
 using namespace std;
 
-int a(int n)
+long long a(long long n)
 {
     if (n == 0 || n == 1)
         return n;
@@ -13,18 +18,27 @@ int a(int n)
 
 int main(void)
 {
-    int n, m;
+    long long n, m = 0;
+    vector< pair<int, int> > v;
+    for (long long i = 0; i <= 99999; i++)
+    {
+        long long b = a(i);
+        if (b > m)
+        {
+            v.push_back(make_pair(i, b));
+            m = b;
+        }
+    }
     cin >> n;
     while (n != 0)
     {
-        m = 0;
-        for (int i = 0; i <= n; i++)
+        int i;
+        for (i = v.size() - 1; i > -1; i--)
         {
-            int b = a(i);
-            if (b > m)
-                m = b;
+            if (v.at(i).first < n)
+                break;
         }
-        cout << m << endl;
+        cout << v.at(i).second << endl;
         cin >> n;
     }
 }

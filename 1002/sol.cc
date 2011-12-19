@@ -62,8 +62,107 @@
 
 #include <iostream>
 #include <sstream>
+#include <vector>
 using namespace std;
+
+char trans(char ch)
+{
+    switch (ch)
+    {
+        case 'i':
+        case 'j':
+            return '1';
+            break;
+        case 'a':
+        case 'b':
+        case 'c':
+            return '2';
+            break;
+        case 'd':
+        case 'e':
+        case 'f':
+            return '3';
+            break;
+        case 'g':
+        case 'h':
+            return '4';
+            break;
+        case 'k':
+        case 'l':
+            return '5';
+            break;
+        case 'm':
+        case 'n':
+            return '6';
+            break;
+        case 'p':
+        case 'r':
+        case 's':
+            return '7';
+            break;
+        case 't':
+        case 'u':
+        case 'v':
+            return '8';
+            break;
+        case 'w':
+        case 'x':
+        case 'y':
+            return '9';
+            break;
+        case 'o':
+        case 'q':
+        case 'z':
+            return '0';
+            break;
+        default: // XXX EXECUTION SHOULD NOT REACH THIS POINT
+            return -1;
+            break;
+    }
+}
+
+bool startswith(string big, string small)
+{
+    if (big.size() < small.size())
+        return false;
+    for (int i = 0; i < small.size(); i++)
+        if (big[i] != trans(small[i]))
+            return false;
+    return true;
+}
+
+string attempt(string n, vector<string> v)
+{
+    for (int i = 0; i < v.size(); i++)
+    {
+        if (startswith(n, v.at(i)))
+        {
+            if (n.size() == v.at(i).size())
+                return " " + v.at(i);
+            if (attempt(n.substr(v.at(i).size()), v) != "No solution.")
+                return v.at(i) + attempt(n.substr(v.at(i).size()), v);
+        }
+    }
+    return "No solution.";
+}
 
 int main(void)
 {
+    while (true)
+    {
+        string n;
+        cin >> n;
+        if (n == "-1")
+            break;
+        int m;
+        cin >> m;
+        vector<string> v(m);
+        for (int i = 0; i < m; i++)
+            cin >> v.at(i);
+        string s = attempt(n, v);
+        if (s[0] == ' ')
+            cout << s.substr(1) << endl;
+        else
+            cout << s << endl;
+    }
 }
