@@ -12,8 +12,7 @@ int main(void)
         for (int j = 1; i + j <= s.size(); j++)
         {
             string sub = s.substr(i, j);
-            if (subs.find(sub) == subs.end())
-                subs.insert(sub);
+            subs.insert(sub);
         }
     cout << subs.size() << endl;
 }
