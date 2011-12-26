@@ -35,7 +35,7 @@ int main(void)
         int i;
         for (i = v.size() - 1; i > -1; i--)
         {
-            if (v.at(i).first < n)
+            if (v.at(i).first <= n)
                 break;
         }
         cout << v.at(i).second << endl;

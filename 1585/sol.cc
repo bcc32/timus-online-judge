@@ -18,10 +18,11 @@ int main(void)
         else
             c[2]++;
     }
-    if (c[0] > c[1] && c[0] > c[2])
-        cout << "Emperor Penguin" << endl;
-    else if (c[1] > c[0] && c[1] > c[2])
-        cout << "Little Penguin" << endl;
+    if (c[0] > c[1])
+        if (c[0] > c[2])
+            cout << "Emperor Penguin" << endl;
+        else
+            cout << "Macaroni Penguin" << endl;
     else
-        cout << "Macaroni Penguin" << endl;
+        cout << "Little Penguin" << endl;
 }
