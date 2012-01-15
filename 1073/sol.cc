@@ -5,10 +5,10 @@ int main(void)
 {
     int n, c = 0;
     cin >> n;
-    for (int i = 245; i >= 1; i--)
+    for (int i = 245; i > 0; i--)
         if (n >= i * i)
         {
-            c++;
+            c += n / (i * i);
             n %= i * i;
         }
     cout << c << endl;
